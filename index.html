@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-Tac-Toe AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <span>
+
+            <img width="500px" height="500px" src="assets/background.png" alt="Board">
+
+            <!-- X IMAGE -->
+
+            <img src="assets/x.png" alt="x" id="x1" style="position: absolute; width: 150px; height: 150px; top: 20px; left: 20px; display: none;">
+            <img src="assets/x.png" alt="x" id="x2" style="position: absolute; width: 150px; height: 150px; top: 20px; left: 178px; display: none;">
+            <img src="assets/x.png" alt="x" id="x3" style="position: absolute; width: 150px; height: 150px; top: 20px; left: 332px; display: none;">
+            <img src="assets/x.png" alt="x" id="x4" style="position: absolute; width: 150px; height: 150px; top: 175px; left: 20px; display: none;">
+            <img src="assets/x.png" alt="x" id="x5" style="position: absolute; width: 150px; height: 150px; top: 175px; left: 178px; display: none;">
+            <img src="assets/x.png" alt="x" id="x6" style="position: absolute; width: 150px; height: 150px; top: 175px; left: 332px; display: none;">
+            <img src="assets/x.png" alt="x" id="x7" style="position: absolute; width: 150px; height: 150px; top: 329px; left: 20px; display: none;">
+            <img src="assets/x.png" alt="x" id="x8" style="position: absolute; width: 150px; height: 150px; top: 329px; left: 178px; display: none;">
+            <img src="assets/x.png" alt="x" id="x9" style="position: absolute; width: 150px; height: 150px; top: 329px; left: 332px; display: none;">
+        
+            <!-- O IMAGE -->
+
+            <img src="assets/o.png" alt="o" id="o1" style="position: absolute; width: 150px; height: 150px; top: 20px; left: 20px; display: none;">
+            <img src="assets/o.png" alt="o" id="o2" style="position: absolute; width: 150px; height: 150px; top: 20px; left: 178px; display: none;">
+            <img src="assets/o.png" alt="o" id="o3" style="position: absolute; width: 150px; height: 150px; top: 20px; left: 332px; display: none;">
+            <img src="assets/o.png" alt="o" id="o4" style="position: absolute; width: 150px; height: 150px; top: 175px; left: 20px; display: none;">
+            <img src="assets/o.png" alt="o" id="o5" style="position: absolute; width: 150px; height: 150px; top: 175px; left: 178px; display: none;">
+            <img src="assets/o.png" alt="o" id="o6" style="position: absolute; width: 150px; height: 150px; top: 175px; left: 332px; display: none;">
+            <img src="assets/o.png" alt="o" id="o7" style="position: absolute; width: 150px; height: 150px; top: 329px; left: 20px; display: none;">
+            <img src="assets/o.png" alt="o" id="o8" style="position: absolute; width: 150px; height: 150px; top: 329px; left: 178px; display: none;">
+            <img src="assets/o.png" alt="o" id="o9" style="position: absolute; width: 150px; height: 150px; top: 329px; left: 332px; display: none;">
+
+            <!-- BUTTONS -->
+
+            <button onClick="buttonOne()"   style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 20px; left: 20px;"></button>
+            <button onClick="buttonTwo()"   style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 20px; left: 175px;"></button>
+            <button onClick="buttonThree()" style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 20px; left: 329px;"></button>
+            <button onClick="buttonFour()"  style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 175px; left: 20px;"></button>
+            <button onClick="buttonFive()"  style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 175px; left: 175px;"></button>
+            <button onClick="buttonSix()"   style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 175px; left: 329px;"></button>
+            <button onClick="buttonSeven()" style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 329px; left: 20px;"></button>
+            <button onClick="buttonEight()" style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 329px; left: 175px;"></button>
+            <button onClick="buttonNine()"  style="position: absolute; background-color: transparent; border:none; width: 150px; height: 150px; top: 329px; left: 329px;"></button>
+            
+            <!-- WIN IMAGE -->
+
+            <img src="assets/topleft-bottomright.png" id="topleft-bottomright" style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/topright-bottomleft.png" id="topright-bottomleft" style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/horizontal.png"          id="horizontal"          style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/horizontal-top.png"      id="horizontal-top"      style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/horizontal-bottom.png"   id="horizontal-bottom"   style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/vertical.png"            id="vertical"            style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/vertical-left.png"       id="vertical-left"       style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+            <img src="assets/vertical-right.png"      id="vertical-right"      style="position: absolute; width: 500px; height: 500px; top: 0; left: 0; display: none;">
+
+        </span>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
